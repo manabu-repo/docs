@@ -2,6 +2,246 @@
 
 ## 组件传值在 `data` 中做一次嫁接
 
+```js
+props: {
+    params: {
+        type: Object,
+        default: () => {
+            return {};
+        },
+    },
+},
+data() {
+    return {
+        sourceData: this.params
+    }
+}
+```
+
 ## 动态绑定 `class` 设置样式
 
+```js
+<div class="service-menu">
+    <div class="service-menu-item">
+    <span v-for="(item, index) in breadCrumb" :key="item.name">
+        <span
+        class="menu-item"
+        :class="{'active' : item.type === curSelectType}"
+        @click="onMenuClick(item.type)"
+        >{{ item.name }}</span>
+        <span class="separator" v-show="index !== breadCrumb.length - 1">|</span>
+    </span>
+    </div>
+</div>
+
+<script>
+export default {
+    data() {
+        curSelectType: "microApp",
+    }
+}
+</script>
+```
+
 ## 异步或开销大的操作时使用侦听器 `wacth`
+
+```js
+watch: {
+    findPluginByType(val) {
+        this.pluginList = val;
+    },
+    breadCrumb: {
+        immediate: true,
+        deep: true,
+        handler(val) {
+            if (val.length > 0) {
+                this.curSelectType = val[0].type;
+            }
+        }
+    }
+}
+```
+
+## vue-apollo 请求的两种方式
+
+```js
+import SEARCH_ALL_PLUGIN_BY_KEYWORD_IN_NAME_OR_IN_TYPE from "../graphql/query/searchAllPluginByKeywordInNameOrInType.gql";
+
+apollo: {
+    searchAllPluginByKeywordInNameOrInType: {
+        query: SEARCH_ALL_PLUGIN_BY_KEYWORD_IN_NAME_OR_IN_TYPE,
+        variables() {
+            return {
+                name: "",
+                type: this.curSelectType,
+                page: {},
+            };
+        },
+    },
+},
+```
+
+```js
+async findPluginById(id) {
+    let vm = this;
+    let {
+        data: { findPluginById },
+    } = await vm.$apollo.query({
+        query: FIND_PLUGIN_BY_ID,
+        variables: { id },
+    });
+    return findPluginById;
+}
+```
+
+## Array filter
+
+```js
+computed: {
+    filterData() {
+        if (!this.input) {
+            return this.pluginList;
+        }
+        return this.pluginList.filter((value) => {
+            return value.name.includes(this.input);
+        });
+    },
+}
+```
+
+## vue-apollo 强制优先走网络请求
+
+Apollo 默认优先走缓存。
+
+```js
+findAllIdlType: {
+    query: FINE_ALL_IDL_TYPE,
+    variables() {
+    return {
+        categoryPath: this.curActiveNodeData.path,
+        page: {
+        page: this.pagination.current - 1,
+        size: this.pagination.pageSize,
+        },
+    };
+    },
+    fetchPolicy: "network-only",
+},
+```
+
+## 使用计算属性提高代码利用率
+
+```js
+computed: {
+    dataSource() {
+      let data = [];
+      if (this.keyword === "") {
+        data = this.findAllIdlType;
+      } else {
+        data = this.searchIdlType;
+      }
+      if (!_.isEmpty(data)) {
+        data.forEach((item) => {
+          let fields = item.fullTypename.split(".");
+          item.namespace = fields[0];
+          item.typeId = fields[1];
+        });
+      } else {
+        data = [];
+      }
+
+      return data;
+    },
+},
+```
+
+## ES6 对象解耦
+
+```js
+async findIdlTypeById(id) {
+    let {
+    data: { findIdlTypeById },
+    } = await this.$apollo.query({
+    query: FIND_IDL_TYPE_BY_ID,
+    variables: {
+        id: id,
+    },
+    });
+    return findIdlTypeById;
+},
+```
+
+apollo 请求还是推荐先考虑自动请求的方式，而不是方法。这样可以不必每次去手动更新数据，而是更新到缓存。
+
+## 树结构递归查询
+
+巨常遇见
+
+```js
+addTreeNode(tree, key, id, name, path) {
+    let vm = this;
+    let title = tree.forEach((element) => {
+    if (element.key === key) {
+        if (element.children) {
+        element.children.push({
+            title: name,
+            key: id,
+            superiorId: key,
+            path: path,
+        });
+        } else {
+        element.children = [];
+        element.children.push({
+            title: name,
+            key: id,
+            superiorId: key,
+            path: path,
+        });
+        }
+        return "find";
+    }
+    if (!element.children) {
+        return "none";
+    }
+    this.addTreeNode(element.children, key, name);
+    });
+},
+getKeyPath(key, nodes, path) {
+    let that = this;
+    if (path === undefined) {
+    path = [];
+    }
+    for (let item of nodes) {
+    let tmp = path.concat();
+    tmp.push(item.key);
+    if (key === item.key) {
+        return tmp;
+    }
+    if (item.children) {
+        let result = that.getKeyPath(key, item.children, tmp);
+        if (result) {
+        return result;
+        }
+    }
+    }
+},
+async createTree(id, tree) {
+    let node = await this.findAllIdlCategoryBySuperiorId(id);
+    if (node === []) {
+    return "none";
+    }
+
+    node.forEach((item) => {
+    if (tree !== undefined) {
+        tree.push({
+        title: item.name,
+        key: item.id,
+        superiorId: item.superiorId,
+        path: item.path,
+        children: [],
+        });
+        this.createTree(item.key, item.children);
+    }
+    });
+},
+```
