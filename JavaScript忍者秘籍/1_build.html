@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build</title>
+  <style>
+    #first {
+      color: green;
+    }
+
+    #second {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <ul id="first"></ul>
+    <ul id="second"></ul>
+  </div>
+  <script>
+    const addMessage = (element, message) => {
+      let messageElement = document.createElement("li");
+      messageElement.textContent = message;
+      element.appendChild(messageElement);
+    } 
+
+    let first = document.getElementById("first");
+    addMessage(first, "Page loading");
+
+    document.body.addEventListener("mousemove", () => {
+      let second = document.getElementById("second");
+      addMessage(second, "Event: mousemove");
+    })
+
+    document.body.addEventListener("click", () => {
+      let second = document.getElementById("second");
+      addMessage(second, "Event: click");
+    })
+  </script>
+</body>
+
+</html>
