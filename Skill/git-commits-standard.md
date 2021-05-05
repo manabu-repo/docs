@@ -4,7 +4,7 @@
 --      |     --
 feat    |   新增一个功能
 fix     |   修复一个bug
-docx    |   文档变更
+docs    |   文档变更
 style   |   代码格式修正
 refactor|   重构代码
 pref    |   改善性能
