@@ -1,0 +1,25 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Hands-on practice - book demo",
+  "main": "index.js",
+  "devDependencies": {
+    "docsify": "^4.12.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkashiGakki/docs.git"
+  },
+  "keywords": [
+    "docs"
+  ],
+  "author": "Akashi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkashiGakki/docs/issues"
+  },
+  "homepage": "https://github.com/AkashiGakki/docs#readme"
+}
