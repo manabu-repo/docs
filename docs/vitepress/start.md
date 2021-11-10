@@ -31,3 +31,9 @@ open package.json
   }
 }
 ```
+
+## 启动服务
+
+```s
+yarn docs:dev
+```
