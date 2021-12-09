@@ -11,7 +11,19 @@ const accumulator = arr => {
   return arr.reduce((prev, cur) => prev + cur, 0);
 };
 
-const sortArray = arr => {
+/**
+ * @description: 二维数组排序
+ * @param {Array} arr
+ * @param {String} mode 排序方式
+ * @return {*}
+ */
+const sortArray = (arr, mode = 'x') => {
+  mode === 'x' && arr.sort();
+
+  mode === 'y' && arr.sort((prev, cur) => prev[1] - cur[1]);
+};
+
+const sort = arr => {
   // const temp = arr.copyWithin(0, 0);
   // arr.map((el, index) => {
   //   if (el > temp[index + 1]) {
@@ -19,8 +31,6 @@ const sortArray = arr => {
   //   }
   // });
   // return temp;
-
-  return arr.sort((prev, cur) => prev[1] - cur[1]);
 };
 
 module.exports = {
