@@ -15,3 +15,7 @@ const Request = () => {
     return icon[type];
   };
 };
+
+module.exports = {
+  Request,
+}
