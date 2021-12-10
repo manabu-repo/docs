@@ -33,9 +33,23 @@ const sort = arr => {
   // return temp;
 };
 
+const arrayMin = arr => {
+  if (!arr.length) return;
+
+  return arr.reduce((prev, cur) => Math.min(prev, cur));
+};
+
+const arrayMax = arr => {
+  if (!arr.length) return;
+
+  return arr.reduce((prev, cur) => (prev > cur ? prev : cur));
+};
+
 module.exports = {
   randomPosition,
   swapArray,
   accumulator,
   sortArray,
+  arrayMin,
+  arrayMax,
 };
