@@ -45,6 +45,73 @@ const arrayMax = arr => {
   return arr.reduce((prev, cur) => (prev > cur ? prev : cur));
 };
 
+const uniqueArraySet = arr => {
+  return Array.from(new Set(arr));
+};
+
+const uniqueArrayIncludes = arr => {
+  const res = [];
+  arr.map(item => !res.includes(item) && res.push(item));
+  return res;
+};
+
+const uniqueArrayFilter = arr => {
+  return arr.filter((item, index) => {
+    return arr.indexOf(item) === index;
+  });
+};
+
+const uniqueArrayReduce = arr => {
+  return arr.reduce((prev, cur) => {
+    return prev.includes[cur] ? prev : prev.concat(cur);
+  }, []);
+};
+
+/**
+ * @description 二维数组转化为一维数组
+ * @param {Array} arr
+ * @returns {Array}
+ */
+const flatten = arr => {
+  return arr.reduce((prev, cur) => prev.concat(cur));
+};
+
+/**
+ * @description 多维数组转化为一维数组
+ * @param {Array} arr
+ * @returns {Array}
+ */
+const arrayFlat = arr => {
+  // return arr.reduce((prev, cur) => prev.concat(Array.isArray(cur) ? arrayFlat(cur) : cur), []);
+  return arr.reduce((prev, cur) => {
+    return Array.isArray(cur) ? arrayFlat(cur) : prev.concat(cur);
+  }, []);
+};
+
+const computedOccurNumber = arr => {
+  arr.reduce((prev, cur) => {
+    if (prev.cur) {
+      prev[cur]++;
+    } else {
+      prev[cur] = 1;
+    }
+
+    return prev;
+  }, []);
+};
+
+const test = arr => {
+  const map = new Map();
+  arr.reduce((prev, cur) => {
+    if (map.has(cur)) {
+      map.set(cur);
+    } else {
+    }
+
+    return cur;
+  }, map);
+};
+
 module.exports = {
   randomPosition,
   swapArray,
@@ -52,4 +119,11 @@ module.exports = {
   sortArray,
   arrayMin,
   arrayMax,
+  uniqueArraySet,
+  uniqueArrayIncludes,
+  uniqueArrayFilter,
+  uniqueArrayReduce,
+  flatten,
+  arrayFlat,
+  computedOccurNumber,
 };
