@@ -8,4 +8,4 @@ const arr = [
   [3, 6],
 ];
 const res = sortArray(arr);
-console.log('res', arr);
+console.log('arr', arr);
