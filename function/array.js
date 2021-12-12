@@ -33,22 +33,11 @@ const accumulator = arr => {
  * @description: 二维数组排序
  * @param {array} arr
  * @param {string} mode 排序方式
- * @return {undefined}
  */
 const sortArray = (arr, mode = 'x') => {
   mode === 'x' && arr.sort();
 
   mode === 'y' && arr.sort((prev, cur) => prev[1] - cur[1]);
-};
-
-const sort = arr => {
-  // const temp = arr.copyWithin(0, 0);
-  // arr.map((el, index) => {
-  //   if (el > temp[index + 1]) {
-  //     [el, temp[index + 1]] = [temp[index + 1], el];
-  //   }
-  // });
-  // return temp;
 };
 
 /**
@@ -147,18 +136,6 @@ const computedOccurNumber = arr => {
 
     return prev;
   }, {});
-};
-
-const test = arr => {
-  const map = new Map();
-  arr.reduce((prev, cur) => {
-    if (map.has(cur)) {
-      map.set(cur);
-    } else {
-    }
-
-    return cur;
-  }, map);
 };
 
 module.exports = {
