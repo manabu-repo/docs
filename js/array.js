@@ -36,8 +36,7 @@ const copyWithin = (target = 0, start = 0, end = arr.length) => {
 
 /**
  * @description 返回一个新的Array Iterator对象,包含数组中每个索引的键/值对
- * @returns {function}}
- } {key: number, value: any}}
+ * @returns {{ key: number, value: any }}
  */
 const entries = () => {
   let index = 0;
@@ -48,9 +47,19 @@ const entries = () => {
   return next;
 };
 
+/**
+ * @description 数组中所有元素满足条件
+ * @param {(element: any, index: number, arr: array) => any} callback
+ * @returns {boolean}
+ */
 const every = callback => {
   if (arr.length === 0) return true;
 
-  callback;
-  return callback(element, index, arr);
+  let res = arr.find(element => callback(element, index, arr));
+
+  if (res) {
+    return true;
+  }
+
+  return false;
 };
