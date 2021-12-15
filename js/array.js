@@ -33,3 +33,24 @@ const copyWithin = (target = 0, start = 0, end = arr.length) => {
 
   return arr;
 };
+
+/**
+ * @description 返回一个新的Array Iterator对象,包含数组中每个索引的键/值对
+ * @returns {function}}
+ } {key: number, value: any}}
+ */
+const entries = () => {
+  let index = 0;
+  let next = () => {
+    index++;
+    return { key: index, value: arr[index] };
+  };
+  return next;
+};
+
+const every = callback => {
+  if (arr.length === 0) return true;
+
+  callback;
+  return callback(element, index, arr);
+};
