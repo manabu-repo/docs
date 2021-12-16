@@ -55,13 +55,18 @@ const entries = () => {
 const every = (callback, _this = this) => {
   if (arr.length === 0) return true;
 
-  let res = arr.map(element => callback(element, index, arr));
+  const verify = [];
+  arr.map(element => {
+    let validate = callback(element, index, arr);
+    verify.push(validate);
+  });
 
-  if (res) {
-    return true;
+  const validate = verify.find(v => v === false);
+  if (validate) {
+    return false;
   }
 
-  return false;
+  return true;
 };
 
 /**
@@ -84,7 +89,7 @@ const fill = (value, start = 0, end = arr.length) => {
  * @param {(element: any, index: number, arr: array) => any} callback
  * @returns {boolean}
  */
- const some = (callback, _this = this) => {
+const some = (callback, _this = this) => {
   if (arr.length === 0) return true;
 
   let res = arr.find(element => callback(element, index, arr));
