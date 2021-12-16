@@ -52,7 +52,39 @@ const entries = () => {
  * @param {(element: any, index: number, arr: array) => any} callback
  * @returns {boolean}
  */
-const every = callback => {
+const every = (callback, _this = this) => {
+  if (arr.length === 0) return true;
+
+  let res = arr.map(element => callback(element, index, arr));
+
+  if (res) {
+    return true;
+  }
+
+  return false;
+};
+
+/**
+ * @description 用一个固定值填充从开始索引到终止（不包括）的数组
+ * @param {any} value
+ * @param {number} start
+ * @param {number} end
+ * @returns {array}
+ */
+const fill = (value, start = 0, end = arr.length) => {
+  for (let i = start; i < end; i++) {
+    arr[i] = value;
+  }
+
+  return arr;
+};
+
+/**
+ * @description 数组中至少存在一个元素满足条件
+ * @param {(element: any, index: number, arr: array) => any} callback
+ * @returns {boolean}
+ */
+ const some = (callback, _this = this) => {
   if (arr.length === 0) return true;
 
   let res = arr.find(element => callback(element, index, arr));
