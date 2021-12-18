@@ -85,6 +85,74 @@ const fill = (value, start = 0, end = arr.length) => {
 };
 
 /**
+ * @description 返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined
+ * @param {(element: any, index: number, arr: array) => any} callback
+ * @returns {Element | undefined}
+ */
+const find = (callback, _this = this) => {
+  let el;
+  arr.map(element => {
+    el = callback(element, index, arr);
+  });
+
+  if (el) {
+    return el;
+  }
+  return undefined;
+};
+
+/**
+ * @description 返回满足条件的第一个元素的索引，若没找到则返回-1
+ * @param {(element: any, index: number, arr: array) => any} callback
+ * @returns {number}
+ */
+const findIndex = (callback, _this = this) => {
+  let el;
+  arr.map(element => {
+    el = callback(element, index, arr);
+  });
+
+  if (el) {
+    return index;
+  }
+  return -1;
+};
+
+/**
+ * @description 按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回
+ * @param {number} deep
+ * @returns {array}
+ */
+const flat = (deep = 1) => {
+  return arr.reduce((acc, val) => acc.concat(val), []);
+};
+
+/**
+ * @description 使用映射函数映射每个元素，然后将结果压缩成一个新数组。与arr.flat(1)几乎相同
+ * @param {(element: any, index: number, arr: array) => any} callback
+ * @returns {array}
+ */
+const flatMap = callback => {
+  return callback(current, index, arr);
+};
+
+/**
+ * @description 对每一个函数执行一次给定函数
+ * @param {(element: any, index: number, arr: array) => any} callback
+ */
+const forEach = (callback, _this = this) => {
+  callback(element, index, arr);
+};
+
+/**
+ * @description 对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例
+ * @returns {array}
+ */
+const from = () => {
+  return Array.from(arr);
+};
+
+/**
  * @description 数组中至少存在一个元素满足条件
  * @param {(element: any, index: number, arr: array) => any} callback
  * @returns {boolean}
