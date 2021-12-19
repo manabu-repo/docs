@@ -145,11 +145,39 @@ const forEach = (callback, _this = this) => {
 };
 
 /**
- * @description 对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例
+ *  @description 对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例
+ * @param {array} arr
+ * @param {(el: any) => void} callback
+ * @param {*} _this
  * @returns {array}
  */
-const from = () => {
+const from = (arr, callback, _this = this) => {
   return Array.from(arr);
+};
+
+/**
+ * @description 判断一个数组是否包含一个指定的值，返回true或false
+ * @param {any} element
+ * @param {number} index
+ * @returns {boolean}
+ */
+const includes = (element, index = 0) => {
+  const el = arr.find(e => e === element);
+
+  if (el) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * @description 返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1
+ * @param {any} element
+ * @param {number} index
+ * @returns {number}
+ */
+const indexOf = (element, index = 0) => {
+  return arr.findIndex(e => e === element);
 };
 
 /**
