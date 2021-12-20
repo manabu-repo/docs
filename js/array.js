@@ -181,6 +181,33 @@ const indexOf = (element, index = 0) => {
 };
 
 /**
+ * @description 确定传递的值是否是一个 Array
+ * @param {any} obj
+ * @returns {boolean}
+ */
+const isArray = obj => {
+  return Array.isArray(obj);
+};
+
+/**
+ * @description 将数组的所有元素连接成一个字符串并返回这个字符串
+ * @param {string} sep
+ * @returns {string}
+ */
+const join = sep => {
+  return;
+};
+
+/**
+ * @description 返回一个包含数组中每个索引键的Array Iterator对象
+ * @returns {Iterator}
+ */
+const keys = () => {
+  return arr.keys();
+}
+
+
+/**
  * @description 数组中至少存在一个元素满足条件
  * @param {(element: any, index: number, arr: array) => any} callback
  * @returns {boolean}
