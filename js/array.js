@@ -204,8 +204,64 @@ const join = sep => {
  */
 const keys = () => {
   return arr.keys();
-}
+};
 
+/**
+ * @description 返回指定元素在数组中最后一个的索引
+ * @param {any} element
+ * @param {number} index
+ * @returns {number}
+ */
+const lastIndexOf = (element, index = arr.length - 1) => {
+  // return arr.reverse().findIndex(e => e === element);
+};
+
+/**
+ * @description 创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值
+ * @param {(element: any, index: number, arr: array) => any[]} callback
+ * @param {this} _this
+ */
+const map = (callback, _this = this) => {
+  return callback(element, index, arr);
+};
+
+/**
+ * @description 创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型
+ * @param  {...any} arguments
+ * @returns {array}
+ */
+const of = (...args) => {
+  return new Array(...args);
+};
+
+/**
+ * @description 从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度
+ * @returns {element}
+ */
+const pop = () => {
+  const res = arr[arr.length - 1];
+  arr.length -= 1;
+  return res;
+};
+
+/**
+ * @description 将一个或多个元素添加到数组的末尾，并返回该数组的新长度
+ * @param {...any} args
+ * @returns {number}
+ */
+const push = (...args) => {
+  arr.length += args.length;
+  const start = args.length;
+  const end = start + args.length;
+
+  for (let index = start; index < end; index++) {
+    arr[index] = args.shift();
+  }
+
+  return arr.length;
+};
+
+const reduce = (callback, defaultValue = []) = {}
 
 /**
  * @description 数组中至少存在一个元素满足条件
