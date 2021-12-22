@@ -261,7 +261,35 @@ const push = (...args) => {
   return arr.length;
 };
 
-const reduce = (callback, defaultValue = []) = {}
+/**
+ * @description 对数组中的每个元素执行回调函数，将其结果汇总为单个返回值
+ */
+const reduce = callback => {};
+
+/**
+ *
+ * @param {*} callback
+ */
+const reduceRight = callback => {};
+
+/**
+ * @description 返回倒置的数组，该方法会改变原数组
+ * @returns {array}
+ */
+const reverse = () => {
+  const res = [];
+  const len = arr.length - 1;
+
+  for (let index = len; index > 0; index--) {
+    res.push(arr[index]);
+  }
+
+  return res;
+};
+
+const shift = () => {
+  
+}
 
 /**
  * @description 数组中至少存在一个元素满足条件
