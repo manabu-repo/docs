@@ -18,7 +18,28 @@ const chartAt = index => {
   return str.charAt(index);
 };
 
+/**
+ * @description A => 65
+ * @param {number} index
+ * @returns {string}
+ */
+const chartCodeAt = (index = 0) => {
+  return str.charCodeAt(index);
+};
+
+/**
+ * @description 将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回
+ * @param  {...string} args
+ * @returns {string}
+ */
+const concat = (...args) => {
+  const res = str;
+  args.map(s => res + s);
+  return res;
+};
+
 module.exports = {
   at,
   chartAt,
-}
+  concat,
+};
