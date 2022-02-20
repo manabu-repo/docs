@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/AkashiGakki/docs/issues"
   },
-  "homepage": "https://github.com/AkashiGakki/docs#readme"
+  "homepage": "https://github.com/AkashiGakki/docs#readme",
+  "dependencies": {
+    "rxjs": "^7.4.0"
+  }
 }
