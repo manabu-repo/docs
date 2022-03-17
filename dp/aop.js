@@ -24,3 +24,19 @@ const func = function () {
 const res = func.before(() => console.log(1)).after(() => console.log(3))
 
 res()
+
+// 需要声明为函数作用域，而不是匿名函数，才能拥有自己的this
+Function.prototype.intercept = function (fn) {
+  return () => {
+    fn.apply(this, arguments)
+    return this.apply(this, arguments)
+  }
+}
+
+const test = () => {
+  console.log('test')
+}
+
+const use = test.intercept(() => console.log('intercept'))
+
+use()
