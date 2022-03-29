@@ -53,8 +53,25 @@ export default {
       }
     },
 
+    async deployPath() {
+      let tool = this.graph
+        .getView("maptalks")
+        .createTool(ToolType.TOOL_TYPE_SELECT_PATH);
+      let r = await tool.request({});
+
+      let path = r.reduce(
+        (prev, cur) => {
+          prev.push([cur.x, cur.y]);
+          return prev;
+        },
+        [[this.shape.props.lon, this.shape.props.lat]]
+      );
+
+      return path;
+    },
+
     getIdsByTree(tree, ids = []) {
-      tree.map(item => {
+      tree.map((item) => {
         if (item.children.length) {
           this.getIdsByTree(item.children, ids);
         } else {
@@ -67,9 +84,9 @@ export default {
 
     filterNodeByTree(ids, tree) {
       const fn = (id, tree) => {
-        tree.map(item => {
+        tree.map((item) => {
           if (item.key === id) {
-            let index = tree.findIndex(e => e.key === id);
+            let index = tree.findIndex((e) => e.key === id);
             tree.splice(index, 1);
           } else {
             fn(id, item.children);
@@ -77,7 +94,7 @@ export default {
         });
       };
 
-      ids.map(id => fn(id, tree));
+      ids.map((id) => fn(id, tree));
       return tree;
     },
   },
