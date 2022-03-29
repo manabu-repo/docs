@@ -52,6 +52,34 @@ export default {
         });
       }
     },
+
+    getIdsByTree(tree, ids = []) {
+      tree.map(item => {
+        if (item.children.length) {
+          this.getIdsByTree(item.children, ids);
+        } else {
+          ids.push(item.key);
+        }
+      });
+
+      return ids;
+    },
+
+    filterNodeByTree(ids, tree) {
+      const fn = (id, tree) => {
+        tree.map(item => {
+          if (item.key === id) {
+            let index = tree.findIndex(e => e.key === id);
+            tree.splice(index, 1);
+          } else {
+            fn(id, item.children);
+          }
+        });
+      };
+
+      ids.map(id => fn(id, tree));
+      return tree;
+    },
   },
 };
 </script>
