@@ -90,3 +90,40 @@ public class Client {
     factory.create("Tank").show();
   }
 }
+
+// 工厂方法模式
+public interface Factory {
+  Enemy create(int screenWidth);
+}
+
+public class AirplaneFactory implements Factory {
+
+  @Override
+  public Enemy create(int screenWidth) {
+    Random random = new Random();
+    return new Airplane(random.nextInt(screenWidth), 0);
+  }
+}
+
+public class TankFactory implements Factory {
+
+  @Override
+  public Enemy create(int screenWidth) {
+    Random random = new Random();
+    return new Tank(random.nextInt(screenWidth), 0);
+  }
+}
+
+public class Client {
+
+  public static void main(String[] args) {
+    int screenWidth = 100;
+    System.out.println("game starting");
+
+    Factory factory = new TankFactory();
+    factory.create(screenWidth).show();
+
+    factory = new AirplaneFactory();
+    factory.create(screenWidth).show();
+  }
+}
