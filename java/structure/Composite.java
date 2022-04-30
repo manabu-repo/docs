@@ -13,6 +13,14 @@ public abstract class Node {
   }
 
   protected abstract void add(Node child);
+
+  // 追加tree指令
+  protected void tree(int space) {
+    for (int i = 0; i < space; i++) {
+      System.out.println("  ");
+    }
+    System.out.println(name);
+  }
 }
 
 // 文件夹
@@ -28,6 +36,17 @@ public class Folder extends Node {
   protected void add(Node child) {
     children.add(child);
   }
+
+  @Override
+  public void tree(int space) {
+    // 调用父类方法列出自己的name
+    super.tree(space);
+
+    space += 2;
+    for (Node node : children) {
+      node.tree(space);
+    }
+  }
 }
 
 // 文件
@@ -41,6 +60,11 @@ public class File extends Node {
   protected void add(Node child) throws Exception {
     System.out.println("不能添加子节点");
     throw new Exception("file can not add any child");
+  }
+
+  @Override
+  public tree(int space) {
+    super.tree(space);
   }
 }
 
