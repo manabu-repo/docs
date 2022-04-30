@@ -21,6 +21,11 @@ public abstract class Node {
     }
     System.out.println(name);
   }
+
+  // 无参重载方法，默认从第0列开始展示
+  protected void tree() {
+    this.tree(0);
+  }
 }
 
 // 文件夹
