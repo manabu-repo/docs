@@ -1,3 +1,4 @@
+// 单例模式，即保证仅存在一个实例
 // eg.
 public class Sun {
 

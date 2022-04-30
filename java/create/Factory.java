@@ -1,3 +1,5 @@
+// 工厂方法，对工厂制造方法进行接口规范化
+// 降低系统耦合，使系统的可维护性、可扩展性得到提升。
 public abstract class Enemy {
 
   protected int x, y;

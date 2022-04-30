@@ -1,4 +1,7 @@
-// 原型模式 深拷贝多份 EnemyPlane
+// 原型模式，参照原型进行批量生产。
+// 用对象创建对象，而不是用类创建对象，以此达到效率的提升。
+
+// 深拷贝多份 EnemyPlane
 public class EnemyPlane implements Cloneable {
 
   private int x, y = 0;
