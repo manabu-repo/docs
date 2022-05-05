@@ -104,3 +104,40 @@ public class Client {
     trafficLight.switchToRed();
   }
 }
+
+// eg. 二元态
+public class Switcher {
+
+  private boolean state = false;
+
+  public void switchOn() {
+    if (state == false) {
+      state = true;
+      System.out.println("light on");
+    } else {
+      System.out.println("error, light is already on");
+    }
+  }
+
+  public void switchOff() {
+    if (state == true) {
+      state = false;
+      System.out.println("light off");
+    } else {
+      System.out.println("error light ia already off");
+    }
+  }
+}
+
+public class Client {
+
+  public static void main(String[] args) {
+    Switcher switcher = new Switcher();
+
+    switcher.switchOff();
+    switcher.switchOn();
+    switcher.switchOff();
+    switcher.switchOn();
+    switcher.switchOn();
+  }
+}
