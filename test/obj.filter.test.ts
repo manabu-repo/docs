@@ -1,9 +1,9 @@
-const { useObjectFilter } = require('../hooks/useObjectFilter')
+import { useObjectFilter } from '../hooks/useObjectFilter'
 
 const obj = {
   akashi: 24,
   asuka: 23,
-  shiori: 20
+  shiori: 20,
 }
 
 const res = useObjectFilter(obj, a => a <= 20)
