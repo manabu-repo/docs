@@ -63,44 +63,6 @@ const arrayMax = arr => {
 };
 
 /**
- * @param {array} arr
- * @returns {array}
- */
-const uniqueArraySet = arr => {
-  return Array.from(new Set(arr));
-};
-
-/**
- * @param {array} arr
- * @returns {array}
- */
-const uniqueArrayIncludes = arr => {
-  const res = [];
-  arr.map(item => !res.includes(item) && res.push(item));
-  return res;
-};
-
-/**
- * @param {array} arr
- * @returns {array}
- */
-const uniqueArrayFilter = arr => {
-  return arr.filter((item, index) => {
-    return arr.indexOf(item) === index;
-  });
-};
-
-/**
- * @param {array} arr
- * @returns {array}
- */
-const uniqueArrayReduce = arr => {
-  return arr.reduce((prev, cur) => {
-    return prev.includes[cur] ? prev : prev.concat(cur);
-  }, []);
-};
-
-/**
  * @description 二维数组转化为一维数组
  * @param {array} arr
  * @returns {array}
@@ -145,10 +107,6 @@ module.exports = {
   sortArray,
   arrayMin,
   arrayMax,
-  uniqueArraySet,
-  uniqueArrayIncludes,
-  uniqueArrayFilter,
-  uniqueArrayReduce,
   flatten,
   arrayFlat,
   computedOccurNumber,
