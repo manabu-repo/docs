@@ -19,10 +19,9 @@ const uniqueArrayFilter = (arr: number[]): number[] => {
   })
 }
 
-// TODO: no work
 const uniqueArrayReduce = (arr: number[]): number[] => {
   return arr.reduce((prev: any, cur: any) => {
-    return prev.includes[cur] ? prev : prev.concat(cur)
+    return prev.includes(cur) ? prev : prev.concat(cur)
   }, [])
 }
 
