@@ -1,28 +1,3 @@
-
-
-
-/**
- * @description 获取最小值
- * @param {number[]} arr
- * @returns {number}
- */
-const arrayMin = arr => {
-  if (!arr.length) return;
-
-  return arr.reduce((prev, cur) => Math.min(prev, cur));
-};
-
-/**
- * @description 获取最大值
- * @param {number[]} arr
- * @returns {number}
- */
-const arrayMax = arr => {
-  if (!arr.length) return;
-
-  return arr.reduce((prev, cur) => (prev > cur ? prev : cur));
-};
-
 /**
  * @description 二维数组转化为一维数组
  * @param {array} arr
@@ -62,12 +37,6 @@ const computedOccurNumber = arr => {
 };
 
 module.exports = {
-  randomPosition,
-  swapArray,
-  accumulator,
-  sortArray,
-  arrayMin,
-  arrayMax,
   flatten,
   arrayFlat,
   computedOccurNumber,
