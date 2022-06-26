@@ -2,12 +2,14 @@ type Observer = {
   list: Record<string, any[]>,
   on: (value: string, fn: () => void) => void
   emit: (value: string) => void
+  remove: (value: string) => boolean
 }
 
 const observer: Observer = {
   list: {},
   on,
   emit,
+  remove,
 }
 
 function on(key: string, fn: () => void): void {
@@ -22,6 +24,14 @@ function emit(key: string): void {
   if (!useKey) return
 
   observer.list[key].forEach((fn: () => void) => fn())
+}
+
+function remove(key: string): boolean {
+  const isKeyExist = Object.keys(observer.list).includes(key)
+  if (!isKeyExist) return true
+
+  delete observer.list[key]
+  return true
 }
 
 export { observer }
