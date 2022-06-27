@@ -3,6 +3,7 @@ type Observer = {
   on: (value: string, fn: () => void) => void
   emit: (value: string) => void
   remove: (value: string) => boolean
+  once: (value: string, fn: () => void) => void
 }
 
 const observer: Observer = {
@@ -10,6 +11,7 @@ const observer: Observer = {
   on,
   emit,
   remove,
+  once,
 }
 
 function on(key: string, fn: () => void): void {
@@ -32,6 +34,13 @@ function remove(key: string): boolean {
 
   delete observer.list[key]
   return true
+}
+
+function once(key: string, fn: () => void): void {
+  on(key, () => {
+    fn()
+    remove(key)
+  })
 }
 
 export { observer }

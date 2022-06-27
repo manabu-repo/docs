@@ -10,3 +10,8 @@ observer.on('asuka', () => console.log('asuka', 2))
 
 observer.emit('asuka')
 observer.emit('nagi')
+
+observer.once('ume', () => console.log('ume'))
+observer.emit('ume')
+observer.emit('ume')
+observer.emit('ume')
