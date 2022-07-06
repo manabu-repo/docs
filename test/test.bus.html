@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+    <script>
+      const Bus = new Vue();
+
+      console.time('test on');
+      for (let i = 0; i < 1000; i++) Bus.$on(`${i}`, () => {});
+      console.timeEnd('test on');
+
+      console.time('test emit');
+      for (let i = 0; i < 1000; i++) Bus.$emit(`${i}`);
+      console.timeEnd('test emit');
+    </script>
+  </body>
+</html>
