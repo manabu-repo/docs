@@ -1,6 +1,6 @@
 # Docs
 
-> Hands-on practice - book docs
+> 😸 Hands-on practice
 
 ```node
 yarn init
