@@ -11,7 +11,7 @@ npx lerna init
 2. first package
 
 ```base
-lerna create `package` -y
+lerna create <`package`> -y
 ```
 
 3. first package install dependencies
@@ -24,16 +24,16 @@ yarn add `figlet`
 
 ```json
 // package.json
-"workspace": {
+"workspace": [
   "package/first",
   "package/*"
-}
+]
 ```
 
 5. with yarn as npm client
 
 ```json
-// lerna.jsonc
+// lerna.json
 {
   "package": {
     "package/*"
@@ -53,7 +53,7 @@ lerna add --dev `jest`
 7. install dependencies in scoped
 
 ```bash
-lerna add --dev `pkg` --scoped `package`
+lerna add --dev <`pkg`> --scope <`package`>
 ```
 
 8. run test in all packages
