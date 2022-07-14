@@ -13,6 +13,7 @@ packages:
 
 ```json
 "main": "index.ts",
+"packageManager": "pnpm@7.4.0",
 ```
 
 ## Referencing workspace packages through aliases
