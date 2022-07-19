@@ -4,8 +4,8 @@ import { version } from '../../package.json'
 
 module.exports = {
   lang: 'en-US',
-  title: 'VitePress',
-  description: 'Vite & Vue powered static site generator.',
+  title: 'Akashi Sai',
+  description: '',
 
   lastUpdated: true,
 
@@ -18,29 +18,31 @@ module.exports = {
     },
 
     editLink: {
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
+      pattern: 'https://github.com/akashigakki/docs/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/vuejs/akashigakki' }
     ],
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Evan You'
+      copyright: 'Copyright © 2022-present Akashi Sai'
     },
 
+    // 搜索
     algolia: {
       appId: '8J64VVRP8K',
       apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
       indexName: 'vitepress'
     },
 
-    carbonAds: {
-      code: 'CEBDT27Y',
-      placement: 'vuejsorg'
-    }
+    // 广告
+    // carbonAds: {
+    //   code: 'CEBDT27Y',
+    //   placement: 'vuejsorg'
+    // }
   }
 }
 
@@ -48,20 +50,20 @@ function nav () {
   return [
     { text: 'Guide', link: '/guide/what-is-vitepress', activeMatch: '/guide/' },
     { text: 'Configs', link: '/config/introduction', activeMatch: '/config/' },
-    {
-      text: version,
-      items: [
-        {
-          text: 'Changelog',
-          link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
-        },
-        {
-          text: 'Contributing',
-          link:
-            'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
-        }
-      ]
-    }
+    // {
+    //   text: version,
+    //   items: [
+    //     {
+    //       text: 'Changelog',
+    //       link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
+    //     },
+    //     {
+    //       text: 'Contributing',
+    //       link:
+    //         'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
+    //     }
+    //   ]
+    // }
   ]
 }
 
