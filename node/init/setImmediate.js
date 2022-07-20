@@ -15,3 +15,9 @@ const start = () => {
   process.nextTick(() => foo())
 }
 start()
+
+// expected:
+// foo
+// promise
+// baz
+// bar
