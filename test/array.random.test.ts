@@ -1,4 +1,3 @@
-import { useRandomPosition } from '../hooks/useRandomPosition';
+import { useRandom } from '../hooks/useRandom'
 
-const res = useRandomPosition([10, 20], 5)
-console.log('res', res)
+console.log('ret: ', useRandom(['pink', 'red', 'yellow']));
